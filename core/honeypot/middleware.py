@@ -36,13 +36,13 @@ class HoneyPotMiddleware(MiddlewareMixin):
                 path=request.path,
                 session_key=getattr(request, "session", None) and request.session.session_key,
             )
-    def get_client_ip(self,request):
-        x_forwarded_for = request.META.get('HTTP_REMOTE_ADDR')
+    def get_client_ip(self, request):
+        """Prefer X-Forwarded-For (client IP behind proxy) else REMOTE_ADDR."""
+        x_forwarded_for = request.META.get("HTTP_X_FORWARDED_FOR")
         if x_forwarded_for:
-            ip = x_forwarded_for.split(',')[0]
-        else:
-            ip = request.META.get('REMOTE_ADDR')
-        return ip
+            # X-Forwarded-For can be a comma-separated list; first is the client
+            return x_forwarded_for.split(",")[0].strip()
+        return request.META.get("REMOTE_ADDR")
 
     def apply_rate_limit(self, ip, request):
         if not ip:
