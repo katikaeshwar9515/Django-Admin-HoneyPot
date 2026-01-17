@@ -1,0 +1,92 @@
+{% extends "base.html" %} {% block extra_css %}
+<style>
+  .section-card {
+    border: 1px solid #e5e7eb;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+    background: #ffffff;
+    height: 100%;
+  }
+  .placeholder-photo {
+    border-radius: 0.75rem;
+    background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+    color: #6b7280;
+    font-weight: 600;
+  }
+</style>
+{% endblock %} {% block content %}
+<div class="container py-5">
+  <div class="text-center mb-5">
+    <p class="text-uppercase text-primary fw-semibold mb-2">About</p>
+    <h1 class="fw-bold">Django Admin HoneyPot</h1>
+    <p class="lead text-muted mt-3">
+      A secure decoy experience that hides your real admin behind a honeypot
+      front door while monitoring suspicious activity.
+    </p>
+  </div>
+
+  <div class="row g-4 mb-5">
+    <div class="col-md-4">
+      <div class="section-card h-100">
+        <div class="d-flex align-items-center mb-3">
+          <span class="badge bg-danger me-2">Problem</span>
+        </div>
+        <p class="mb-0 text-muted">
+          Admin URLs are prime brute-force targets. Attackers hammer the login
+          page, consuming resources and probing for weak credentials.
+        </p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="section-card h-100">
+        <div class="d-flex align-items-center mb-3">
+          <span class="badge bg-warning text-dark me-2">Motivation</span>
+        </div>
+        <p class="mb-0 text-muted">
+          We want a lightweight, configurable deterrent that records malicious
+          attempts, slows attackers, and keeps the real admin entry hidden.
+        </p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="section-card h-100">
+        <div class="d-flex align-items-center mb-3">
+          <span class="badge bg-success me-2">Solution</span>
+        </div>
+        <p class="mb-0 text-muted">
+          A honeypot login at <code>/admin/</code> lures probes, applies
+          lockouts, and logs behavior, while the real admin lives safely at
+          <code>/secret-admin-entrance/</code>.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="mb-4 d-flex align-items-center justify-content-between flex-wrap gap-2"
+  >
+    <div>
+      <p class="text-uppercase text-primary fw-semibold mb-1">Team</p>
+      <h3 class="fw-bold mb-0">People behind the honeypot</h3>
+    </div>
+  </div>
+
+  <div class="row g-4">
+    {% for member in team_members %}
+    <div class="col-md-3 col-sm-6">
+      <div class="section-card text-center h-100">
+        <div
+          class="ratio ratio-1x1 mb-3 placeholder-photo d-flex align-items-center justify-content-center"
+        >
+          <span>Photo here</span>
+        </div>
+        <h5 class="fw-bold">{{ member.name }}</h5>
+        <p class="text-muted small mb-1">{{ member.role }}</p>
+        <p class="text-muted small mb-0">{{ member.details }}</p>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
