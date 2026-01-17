@@ -77,21 +77,25 @@ class AboutView(TemplateView):
         context["team_members"] = [
             {
                 "name": "Eshwar Katika",
+                "image": "images/eshwar.jpg",
                 "role": "Team Leader",
                 "details": "22E11A6228",
             },
             {
                 "name": "K Indu",
+                "image": "images/user.jpg",
                 "role": "",
                 "details": "22E11A6230",
             },
             {
                 "name": "Sahasra Ch",
+                "image": "images/user.jpg",
                 "role": "",
                 "details": "22E11A6211",
             },
             {
                 "name": "Santosh K",
+                "image": "images/user.jpg",
                 "role": "",
                 "details": "22E11A6229",
             },

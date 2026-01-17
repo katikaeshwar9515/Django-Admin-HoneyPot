@@ -74,8 +74,6 @@
 
   <div class="row g-4">
     {% for member in team_members %}
-
-    hello
     <div class="col-md-3 col-sm-6">
       <div class="section-card text-center h-100">
         <div
@@ -83,7 +81,7 @@
           style="border-radius: 0.75rem"
         >
           <img
-            src="./../../../docs/user.jpg"
+            src="{% static member.image %}"
             alt="{{ member.name }}"
             class="w-100 h-100 object-fit-cover"
           />
