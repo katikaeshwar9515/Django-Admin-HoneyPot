@@ -14,6 +14,7 @@ djangorestframework-simplejwt
 django-cors-headers
 django-robots
 django-debug-toolbar
+whitenoise
 
 # deployment module
 gunicorn

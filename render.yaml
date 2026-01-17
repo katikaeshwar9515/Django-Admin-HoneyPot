@@ -1,0 +1,51 @@
+services:
+  - type: web
+    name: django-admin-honeypot
+    env: docker
+    plan: free
+    region: oregon
+    dockerfilePath: Dockerfile
+    autoDeploy: true
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DEBUG
+        value: "False"
+      - key: ALLOWED_HOSTS
+        value: "{{self.hostname}}"
+      - key: CSRF_TRUSTED_ORIGINS
+        value: "https://{{self.hostname}}"
+      - key: DB_ENGINE
+        value: django.db.backends.postgresql
+      - key: DB_NAME
+        fromDatabase:
+          name: honeypot-db
+          property: database
+      - key: DB_USER
+        fromDatabase:
+          name: honeypot-db
+          property: user
+      - key: DB_PASS
+        fromDatabase:
+          name: honeypot-db
+          property: password
+      - key: DB_HOST
+        fromDatabase:
+          name: honeypot-db
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: honeypot-db
+          property: port
+      - key: USE_SSL_CONFIG
+        value: "True"
+      - key: SHOW_SWAGGER
+        value: "False"
+      - key: HONEYPOT_ALERT_EMAIL
+        value: ""
+      - key: HONEYPOT_ALERT_WEBHOOK
+        value: ""
+databases:
+  - name: honeypot-db
+    plan: free
+    region: oregon

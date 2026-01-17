@@ -35,6 +35,12 @@ ALLOWED_HOSTS = config(
     default="*",
 )
 
+CSRF_TRUSTED_ORIGINS = config(
+    "CSRF_TRUSTED_ORIGINS",
+    cast=lambda v: [s.strip() for s in v.split(",") if s.strip()],
+    default=[],
+)
+
 COMINGSOON = config("COMINGSOON", cast=bool, default=False)
 
 
@@ -64,6 +70,7 @@ SITE_ID = config("SITE_ID", cast=int, default=1)
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -171,6 +178,9 @@ MEDIA_ROOT = BASE_DIR / "media"
 STATICFILES_DIRS = [
     BASE_DIR / "staticfiles",
 ]
+
+# Serve static files efficiently in production
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 
 # Default primary key field type
