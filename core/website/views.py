@@ -1,6 +1,7 @@
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 from django.views.generic import ListView,FormView,CreateView,TemplateView
+from django.templatetags.static import static
 from .forms import PhotoForm
 from .models import Photo
 from honeypot.models import LoginAttempt, BlackList, HoneyPotHit
@@ -77,25 +78,25 @@ class AboutView(TemplateView):
         context["team_members"] = [
             {
                 "name": "Eshwar Katika",
-                "image": "images/eshwar.jpg",
+                "image": static("images/eshwar.jpg"),
                 "role": "Team Leader",
                 "details": "22E11A6228",
             },
             {
                 "name": "K Indu",
-                "image": "images/user.jpg",
+                "image": static("images/user.jpg"),
                 "role": "",
                 "details": "22E11A6230",
             },
             {
                 "name": "Sahasra Ch",
-                "image": "images/user.jpg",
+                "image": static("images/user.jpg"),
                 "role": "",
                 "details": "22E11A6211",
             },
             {
                 "name": "Santosh K",
-                "image": "images/user.jpg",
+                "image": static("images/user.jpg"),
                 "role": "",
                 "details": "22E11A6229",
             },
