@@ -10,5 +10,9 @@ RUN pip3 install --upgrade pip && pip3 install -r requirements.txt
 
 COPY ./core .
 
-# Run migrations, collect static, then start Gunicorn
-CMD ["sh", "-c", "python manage.py migrate && python manage.py collectstatic --noinput && gunicorn core.wsgi:application --bind 0.0.0.0:8000"]
+# Run migrations, create superuser if missing, collect static, then start Gunicorn
+CMD ["sh", "-c", \
+	"python manage.py migrate && " \
+	"python manage.py createsuperuser --noinput --username $DJANGO_SUPERUSER_USERNAME --email $DJANGO_SUPERUSER_EMAIL || true && " \
+	"python manage.py collectstatic --noinput && " \
+	"gunicorn core.wsgi:application --bind 0.0.0.0:8000" ]

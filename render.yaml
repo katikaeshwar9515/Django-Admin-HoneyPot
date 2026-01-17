@@ -45,6 +45,12 @@ services:
         value: ""
       - key: HONEYPOT_ALERT_WEBHOOK
         value: ""
+      - key: DJANGO_SUPERUSER_USERNAME
+        value: "Admin"
+      - key: DJANGO_SUPERUSER_EMAIL
+        value: "admin@admin.com"
+      - key: DJANGO_SUPERUSER_PASSWORD
+        value: "Admin@123"
 databases:
   - name: honeypot-db
     plan: free
