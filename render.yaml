@@ -12,9 +12,9 @@ services:
       - key: DEBUG
         value: "False"
       - key: ALLOWED_HOSTS
-        value: "{{self.hostname}}"
+        value: "{{self.hostname}},.onrender.com"
       - key: CSRF_TRUSTED_ORIGINS
-        value: "https://{{self.hostname}}"
+        value: "https://{{self.hostname}},https://*.onrender.com"
       - key: DB_ENGINE
         value: django.db.backends.postgresql
       - key: DB_NAME
