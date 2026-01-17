@@ -83,24 +83,24 @@ class AboutView(TemplateView):
         context = super().get_context_data(**kwargs)
         context["team_members"] = [
             {
-                "name": "Alex Rivera",
-                "role": "Security Engineer",
-                "details": "Leads threat modeling and honeypot tuning.",
+                "name": "Eshwar Katika",
+                "role": "Team Leader",
+                "details": "22E11A6228",
             },
             {
-                "name": "Jordan Lee",
-                "role": "Backend Developer",
-                "details": "Builds Django features and API integrations.",
+                "name": "K Indu",
+                "role": "",
+                "details": "22E11A6230",
             },
             {
-                "name": "Sam Patel",
-                "role": "DevOps",
-                "details": "Automates deploys and observability pipelines.",
+                "name": "Sahasra Ch",
+                "role": "",
+                "details": "22E11A6211",
             },
             {
-                "name": "Taylor Chen",
-                "role": "Product Designer",
-                "details": "Crafts UX flows for safe admin access.",
+                "name": "Santosh K",
+                "role": "",
+                "details": "22E11A6229",
             },
         ]
         return context

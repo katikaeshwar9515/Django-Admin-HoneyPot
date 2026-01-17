@@ -1,0 +1,86 @@
+/* Apple-style UI overrides for rounded corners and modern inputs/buttons */
+
+/* Input fields with better focus states */
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="url"],
+input[type="number"],
+input[type="tel"],
+textarea,
+select,
+.vTextField {
+  border-radius: var(--border-radius-small) !important;
+  padding: 10px 14px !important;
+  font-size: 15px !important;
+  transition: all 0.2s ease !important;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="number"]:focus,
+input[type="tel"]:focus,
+textarea:focus,
+select:focus,
+.vTextField:focus {
+  border-color: var(--primary) !important;
+  outline: none !important;
+  box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1) !important;
+}
+
+/* Buttons with rounded corners */
+.button,
+input[type="submit"],
+input[type="button"],
+.submit-row input,
+a.button {
+  border-radius: var(--border-radius-small) !important;
+  padding: 12px 24px !important;
+  font-size: 15px !important;
+  font-weight: 500 !important;
+  transition: all 0.2s ease !important;
+}
+
+.button:hover,
+input[type="submit"]:hover,
+input[type="button"]:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+}
+
+.button:active,
+input[type="submit"]:active,
+input[type="button"]:active {
+  transform: translateY(0);
+}
+
+/* Cards and containers with rounded corners */
+.module,
+.inline-group,
+fieldset,
+.card {
+  border-radius: var(--border-radius) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Tables with rounded corners */
+table {
+  border-radius: var(--border-radius-small) !important;
+  overflow: hidden;
+}
+
+/* Messages with rounded corners */
+.messagelist li {
+  border-radius: var(--border-radius-small) !important;
+}
+
+/* Object tools (action buttons) */
+.object-tools li {
+  border-radius: var(--border-radius-small) !important;
+}
+
+.object-tools a {
+  border-radius: var(--border-radius-small) !important;
+}

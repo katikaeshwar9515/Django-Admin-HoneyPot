@@ -32,9 +32,7 @@ class HoneyPotMiddleware(MiddlewareMixin):
             if BlackList.objects.filter(ip_address=client_ip).exists():
                 return HttpResponseForbidden("You are not allowed to call the website anymore. YOU ARE BANNED!")
             
-            resp = self.apply_rate_limit(client_ip, request)
-            if resp:
-                return resp
+            # Track honeypot hit
             HoneyPotHit.objects.create(
                 ip_address=client_ip,
                 user_agent=request.META.get("HTTP_USER_AGENT"),
