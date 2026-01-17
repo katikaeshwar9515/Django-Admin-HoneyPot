@@ -28,23 +28,16 @@ class LandingView(TemplateView):
                 "desc": "Repeated failures trigger lockouts and provide intel for defense.",
                 "icon": "activity",
             },
-            {
-                "title": "API & Docs",
-                "desc": "Swagger UI ready at /swagger/ for exploring the sample API.",
-                "icon": "file-text",
-            },
         ]
         context["steps"] = [
             "Visit the landing page and understand the honeypot flow.",
             "Probe /admin/ and see lockouts in action.",
             "Use /secret-admin-entrance/ for the real admin login.",
-            "Explore API docs at /swagger/ or upload a file via the demo.",
         ]
         context["stats"] = {
             "honeypot_hits": HoneyPotHit.objects.count(),
             "login_attempts": LoginAttempt.objects.count(),
             "blocked_ips": BlackList.objects.count(),
-            "uploads": Photo.objects.count(),
         }
         return context
 

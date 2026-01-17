@@ -69,11 +69,6 @@
           <a href="/admin/" class="btn btn-outline-danger btn-lg cta-btn"
             >Test Honeypot</a
           >
-          <a
-            href="{% url 'website:upload' %}"
-            class="btn btn-outline-secondary btn-lg cta-btn"
-            >Try the Demo</a
-          >
         </div>
       </div>
       <div class="col-lg-5 text-center">
@@ -84,7 +79,6 @@
             Monitor attempts via honeypot login and logs.
           </p>
           <div class="d-grid gap-2">
-            <a href="/swagger/" class="btn btn-success">View API Docs</a>
             <a href="/about/" class="btn btn-outline-dark">About this demo</a>
           </div>
           <hr class="my-4" />
@@ -100,10 +94,6 @@
             <div class="col-6">
               <div class="fw-bold h4 mb-0">{{ stats.blocked_ips }}</div>
               <div class="text-muted small">Blocked IPs</div>
-            </div>
-            <div class="col-6">
-              <div class="fw-bold h4 mb-0">{{ stats.uploads }}</div>
-              <div class="text-muted small">Demo uploads</div>
             </div>
           </div>
         </div>
@@ -167,16 +157,6 @@
               >Real admin (/secret-admin-entrance/)</a
             >
           </li>
-          <li class="mb-2">
-            <a class="text-decoration-none" href="/swagger/"
-              >Swagger docs (/swagger/)</a
-            >
-          </li>
-          <li class="mb-2">
-            <a class="text-decoration-none" href="{% url 'website:upload' %}"
-              >Demo upload (/upload/)</a
-            >
-          </li>
         </ul>
       </div>
     </div>
@@ -212,9 +192,6 @@
             >Open real admin</a
           >
           <a class="btn btn-outline-danger" href="/admin/">Trigger honeypot</a>
-          <a class="btn btn-outline-success" href="/swagger/"
-            >Open Swagger docs</a
-          >
         </div>
       </div>
     </div>
