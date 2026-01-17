@@ -1,6 +1,6 @@
 from django.utils.deprecation import MiddlewareMixin
 from django.core.cache import cache
-from django.http import HttpResponseForbidden
+from django.http import HttpResponseForbidden, HttpResponse
 from django.utils import timezone
 from datetime import timedelta
 
@@ -21,12 +21,17 @@ class HoneyPotMiddleware(MiddlewareMixin):
             "'django.contrib.auth.middleware.AuthenticationMiddleware'."
         )
         
-        client_ip = self.get_client_ip(request)
-        if BlackList.objects.filter(ip_address=client_ip).exists():
-            return HttpResponseForbidden("You are not allowed to call the website anymore. YOU ARE BANNED!")
+        # Exempt real admin from honeypot checks
+        if request.path.startswith("/secret-admin-entrance/"):
+            return None
         
-        # Only rate-limit /admin/ honeypot endpoint
+        client_ip = self.get_client_ip(request)
+        
+        # Only enforce blacklist for honeypot paths to avoid collateral damage
         if request.path.startswith("/admin"):
+            if BlackList.objects.filter(ip_address=client_ip).exists():
+                return HttpResponseForbidden("You are not allowed to call the website anymore. YOU ARE BANNED!")
+            
             resp = self.apply_rate_limit(client_ip, request)
             if resp:
                 return resp
@@ -37,11 +42,13 @@ class HoneyPotMiddleware(MiddlewareMixin):
                 session_key=getattr(request, "session", None) and request.session.session_key,
             )
     def get_client_ip(self, request):
-        """Prefer X-Forwarded-For (client IP behind proxy) else REMOTE_ADDR."""
+        """Prefer proxy-provided client IP; fall back to REMOTE_ADDR."""
         x_forwarded_for = request.META.get("HTTP_X_FORWARDED_FOR")
         if x_forwarded_for:
-            # X-Forwarded-For can be a comma-separated list; first is the client
             return x_forwarded_for.split(",")[0].strip()
+        x_real_ip = request.META.get("HTTP_X_REAL_IP")
+        if x_real_ip:
+            return x_real_ip.strip()
         return request.META.get("REMOTE_ADDR")
 
     def apply_rate_limit(self, ip, request):
@@ -51,9 +58,8 @@ class HoneyPotMiddleware(MiddlewareMixin):
         current = cache.get(key, 0) + 1
         cache.set(key, current, timeout=HONEYPOT_RATE_WINDOW_SECONDS)
         if current > HONEYPOT_RATE_LIMIT:
-            # lockout and alert
-            BlackList.objects.get_or_create(ip_address=ip)
+            # Soft block (per-window) to avoid perma-banning entire NATs; do not persist blacklist here
             dispatch_alert(ip=ip, reason="Honeypot rate limit exceeded")
-            return HttpResponseForbidden("Too many attempts. You are blocked.")
+            return HttpResponse("Too many attempts. Slow down.", status=429)
 
         
