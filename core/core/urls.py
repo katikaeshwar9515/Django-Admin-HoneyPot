@@ -28,7 +28,7 @@ schema_view = get_schema_view(
         default_version="v1",
         description="Brief descriptions about the api",
         terms_of_service="https://www.google.com/policies/terms/",
-    contact=openapi.Contact(email="support@example.com"),
+    contact=openapi.Contact(email="mittu8644@gmail.com"),
         license=openapi.License(name="MIT License"),
     ),
     public=True,
