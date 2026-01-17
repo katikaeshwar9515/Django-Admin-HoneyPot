@@ -1,99 +1,189 @@
 {% extends "base.html" %} {% block extra_css %}
 <style>
-  .hero {
-    background: radial-gradient(
-      circle at 20% 20%,
-      #eef2ff 0,
-      #f8fafc 45%,
-      #ffffff 100%
-    );
-    border-radius: 24px;
-    padding: 3rem 2.5rem;
-    box-shadow: 0 20px 60px rgba(15, 23, 42, 0.12);
+  :root {
+    --apple-blue: #007aff;
+    --apple-gray: #86868b;
+    --apple-light-gray: #f5f5f7;
+    --apple-border: #d2d2d7;
+    --apple-text: #1d1d1f;
   }
+
+  body {
+    background: #fbfbfd;
+    color: var(--apple-text);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI",
+      sans-serif;
+  }
+
+  .hero {
+    background: linear-gradient(135deg, #ffffff 0%, #f5f5f7 100%);
+    border-radius: 20px;
+    padding: 4rem 3rem;
+    margin-bottom: 4rem;
+    border: 1px solid var(--apple-border);
+  }
+
   .pill {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.35rem 0.9rem;
-    border-radius: 999px;
-    font-weight: 600;
-    background: #0d6efd1a;
-    color: #0d6efd;
-    letter-spacing: 0.02em;
-    text-transform: uppercase;
-    font-size: 0.85rem;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-weight: 500;
+    background: rgba(0, 122, 255, 0.08);
+    color: var(--apple-blue);
+    letter-spacing: 0.01em;
+    font-size: 0.875rem;
+    border: none;
   }
+
   .feature-card {
-    border: 1px solid #e5e7eb;
-    border-radius: 18px;
-    padding: 1.5rem;
+    background: #ffffff;
+    border: 1px solid var(--apple-border);
+    border-radius: 16px;
+    padding: 2rem;
     height: 100%;
-    box-shadow: 0 12px 36px rgba(15, 23, 42, 0.05);
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
+
   .feature-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 16px 42px rgba(15, 23, 42, 0.08);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+    border-color: rgba(0, 122, 255, 0.2);
   }
+
   .step {
-    border-left: 4px solid #0d6efd;
-    padding-left: 1rem;
-    margin-bottom: 1rem;
+    border-left: 2px solid var(--apple-blue);
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
   }
+
   .cta-btn {
-    min-width: 160px;
+    min-width: 140px;
+    padding: 0.75rem 1.5rem;
+    border-radius: 12px;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+    border: none;
+  }
+
+  .btn-primary {
+    background: var(--apple-blue);
+    color: white;
+  }
+
+  .btn-primary:hover {
+    background: #0051d5;
+    transform: translateY(-1px);
+  }
+
+  .btn-outline-danger {
+    background: transparent;
+    color: #ff3b30;
+    border: 1.5px solid #ff3b30;
+  }
+
+  .btn-outline-danger:hover {
+    background: #ff3b30;
+    color: white;
+  }
+
+  .status-card {
+    background: white;
+    border: 1px solid var(--apple-border);
+    border-radius: 16px;
+    padding: 2rem;
+  }
+
+  .stat-number {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: var(--apple-text);
+  }
+
+  .stat-label {
+    font-size: 0.875rem;
+    color: var(--apple-gray);
+    font-weight: 400;
+  }
+
+  h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+
+  .lead {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    color: var(--apple-gray);
+    font-weight: 400;
+  }
+
+  .section-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--apple-blue);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.5rem;
+  }
+
+  .quick-link {
+    color: var(--apple-blue);
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.2s ease;
+  }
+
+  .quick-link:hover {
+    color: #0051d5;
   }
 </style>
 {% endblock %} {% block content %}
 <section class="container py-5" id="top">
   <div class="hero">
-    <div class="row g-4 align-items-center">
+    <div class="row g-5 align-items-center">
       <div class="col-lg-7">
-        <span class="pill mb-3">Django Admin HoneyPot</span>
-        <h1 class="fw-bold mb-3">
-          Deflect attackers. Protect your real admin.
+        <span class="pill mb-4 d-inline-block">Django Admin HoneyPot</span>
+        <h1 class="mb-4">
+          Deflect attackers.<br>Protect your real admin.
         </h1>
-        <p class="lead text-muted mb-4">
-          A clean, production-ready honeypot experience: decoy admin at
-          <code>/admin/</code>, hidden entry at
-          <code>/secret-admin-entrance/</code>, lockouts, logging, and API docs
-          out of the box.
+        <p class="lead mb-5">
+          A minimalist honeypot that absorbs attacks at <code>/admin/</code> while your real admin stays hidden at <code>/secret-admin-entrance/</code>.
         </p>
         <div class="d-flex flex-wrap gap-3">
           <a
             href="/secret-admin-entrance/"
-            class="btn btn-primary btn-lg cta-btn"
-            >Go to Real Admin</a
+            class="btn btn-primary cta-btn"
+            >Real Admin</a
           >
-          <a href="/admin/" class="btn btn-outline-danger btn-lg cta-btn"
+          <a href="/admin/" class="btn btn-outline-danger cta-btn"
             >Test Honeypot</a
           >
         </div>
       </div>
-      <div class="col-lg-5 text-center">
-        <div class="p-4 bg-white rounded-4 shadow-sm border">
-          <h6 class="text-uppercase text-muted fw-semibold">Status</h6>
-          <p class="h4 fw-bold mb-1">Live decoy active</p>
-          <p class="text-muted small mb-3">
-            Monitor attempts via honeypot login and logs.
-          </p>
-          <div class="d-grid gap-2">
-            <a href="/about/" class="btn btn-outline-dark">About this demo</a>
+      <div class="col-lg-5">
+        <div class="status-card">
+          <p class="section-title mb-3">Live Status</p>
+          <p class="h5 fw-semibold mb-4" style="color: var(--apple-text);">Decoy active and monitoring</p>
+          <div class="d-grid gap-2 mb-4">
+            <a href="/about/" class="btn" style="background: var(--apple-light-gray); color: var(--apple-text); border-radius: 12px; padding: 0.75rem;">About</a>
           </div>
-          <hr class="my-4" />
-          <div class="row g-3 text-start">
-            <div class="col-6">
-              <div class="fw-bold h4 mb-0">{{ stats.honeypot_hits }}</div>
-              <div class="text-muted small">Honeypot hits</div>
+          <div class="border-top pt-4" style="border-color: var(--apple-border) !important;">
+          <div class="row g-4">
+            <div class="col-4">
+              <div class="stat-number">{{ stats.honeypot_hits }}</div>
+              <div class="stat-label">Honeypot hits</div>
             </div>
-            <div class="col-6">
-              <div class="fw-bold h4 mb-0">{{ stats.login_attempts }}</div>
-              <div class="text-muted small">Login attempts</div>
+            <div class="col-4">
+              <div class="stat-number">{{ stats.login_attempts }}</div>
+              <div class="stat-label">Attempts</div>
             </div>
-            <div class="col-6">
-              <div class="fw-bold h4 mb-0">{{ stats.blocked_ips }}</div>
-              <div class="text-muted small">Blocked IPs</div>
+            <div class="col-4">
+              <div class="stat-number">{{ stats.blocked_ips }}</div>
+              <div class="stat-label">Blocked IPs</div>
             </div>
           </div>
         </div>
@@ -103,23 +193,16 @@
 </section>
 
 <section class="container py-5" id="features">
-  <div class="d-flex flex-wrap align-items-center justify-content-between mb-4">
-    <div>
-      <p class="text-uppercase text-primary fw-semibold mb-1">Features</p>
-      <h2 class="fw-bold mb-0">What this honeypot ships with</h2>
-    </div>
+  <div class="mb-5">
+    <p class="section-title">Features</p>
+    <h2 style="font-size: 2.5rem; font-weight: 700; letter-spacing: -0.02em;">Built for security</h2>
   </div>
   <div class="row g-4">
     {% for feature in features %}
-    <div class="col-md-6 col-lg-3">
-      <div class="feature-card h-100">
-        <div class="d-flex align-items-center gap-2 mb-2">
-          <span class="badge bg-primary-subtle text-primary"
-            >{{ feature.icon }}</span
-          >
-          <h5 class="mb-0">{{ feature.title }}</h5>
-        </div>
-        <p class="text-muted mb-0">{{ feature.desc }}</p>
+    <div class="col-md-4">
+      <div class="feature-card">
+        <h5 class="mb-3" style="font-weight: 600;">{{ feature.title }}</h5>
+        <p class="mb-0" style="color: var(--apple-gray); line-height: 1.6;">{{ feature.desc }}</p>
       </div>
     </div>
     {% endfor %}
@@ -127,71 +210,70 @@
 </section>
 
 <section class="container py-5" id="workflow">
-  <div class="row g-4 align-items-center">
+  <div class="row g-5 align-items-start">
     <div class="col-lg-6">
-      <p class="text-uppercase text-primary fw-semibold mb-1">How it works</p>
-      <h2 class="fw-bold">Simple flow for defenders and testers</h2>
-      <p class="text-muted">
-        Follow the steps to see the honeypot and the protected admin in action.
+      <p class="section-title">How it works</p>
+      <h2 class="mb-4" style="font-size: 2.5rem; font-weight: 700; letter-spacing: -0.02em;">Simple and effective</h2>
+      <p class="mb-5" style="color: var(--apple-gray); line-height: 1.6; font-size: 1.125rem;">
+        Three steps to see the honeypot in action.
       </p>
-      <div class="mt-3">
+      <div class="mt-4">
         {% for step in steps %}
         <div class="step">
-          <h6 class="fw-bold mb-1">Step {{ forloop.counter }}</h6>
-          <p class="mb-0 text-muted">{{ step }}</p>
+          <h6 class="mb-2" style="font-weight: 600; color: var(--apple-text);">Step {{ forloop.counter }}</h6>
+          <p class="mb-0" style="color: var(--apple-gray);">{{ step }}</p>
         </div>
         {% endfor %}
       </div>
     </div>
     <div class="col-lg-6">
-      <div class="p-4 bg-white rounded-4 border shadow-sm">
-        <h6 class="text-uppercase text-muted fw-semibold">Quick links</h6>
-        <ul class="list-unstyled mb-0">
-          <li class="mb-2">
-            <a class="text-decoration-none" href="/admin/"
-              >Honeypot login (/admin/)</a
-            >
-          </li>
-          <li class="mb-2">
-            <a class="text-decoration-none" href="/secret-admin-entrance/"
-              >Real admin (/secret-admin-entrance/)</a
-            >
-          </li>
-        </ul>
+    <div class="col-lg-6">
+      <div class="status-card">
+        <p class="section-title mb-3">Quick access</p>
+        <div class="d-flex flex-column gap-3">
+          <a class="quick-link d-flex align-items-center justify-content-between" href="/admin/">
+            <span>Honeypot login</span>
+            <span style="color: var(--apple-gray); font-size: 0.875rem;">/admin/</span>
+          </a>
+          <a class="quick-link d-flex align-items-center justify-content-between" href="/secret-admin-entrance/">
+            <span>Real admin</span>
+            <span style="color: var(--apple-gray); font-size: 0.875rem;">/secret-admin-entrance/</span>
+          </a>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 <section class="container py-5" id="contact">
-  <div class="row g-4 align-items-center">
+  <div class="row g-5 align-items-start">
     <div class="col-lg-7">
-      <p class="text-uppercase text-primary fw-semibold mb-1">Contact</p>
-      <h2 class="fw-bold">Need help or want to extend this demo?</h2>
-      <p class="text-muted">
-        Plug in your own email or support channel and swap the placeholders when
-        ready.
+      <p class="section-title">Get in touch</p>
+      <h2 class="mb-4" style="font-size: 2.5rem; font-weight: 700; letter-spacing: -0.02em;">Questions or feedback?</h2>
+      <p class="mb-5" style="color: var(--apple-gray); line-height: 1.6; font-size: 1.125rem;">
+        Contact the team or explore the source code on GitHub.
       </p>
-      <div class="d-flex flex-wrap gap-3 mt-3">
-        <a href="mailto:support@example.com" class="btn btn-dark btn-lg"
-          >Email the team</a
+      <div class="d-flex flex-wrap gap-3">
+        <a href="mailto:mukeshchevula@gmail.com" class="btn cta-btn" style="background: var(--apple-text); color: white;"
+          >Email team</a
         >
         <a
           href="https://github.com/katikaeshwar9515/Django-Admin-HoneyPot"
-          class="btn btn-outline-secondary btn-lg"
+          class="btn cta-btn"
+          style="background: var(--apple-light-gray); color: var(--apple-text);"
           target="_blank"
-          >View repository</a
+          >GitHub</a
         >
       </div>
     </div>
     <div class="col-lg-5">
-      <div class="p-4 bg-white rounded-4 border shadow-sm">
-        <h6 class="text-uppercase text-muted fw-semibold">Quick actions</h6>
-        <div class="d-grid gap-2">
-          <a class="btn btn-primary" href="/secret-admin-entrance/"
-            >Open real admin</a
+      <div class="status-card">
+        <p class="section-title mb-4">Quick actions</p>
+        <div class="d-grid gap-3">
+          <a class="btn btn-primary cta-btn" href="/secret-admin-entrance/"
+            >Real admin</a
           >
-          <a class="btn btn-outline-danger" href="/admin/">Trigger honeypot</a>
+          <a class="btn btn-outline-danger cta-btn" href="/admin/">Test honeypot</a>
         </div>
       </div>
     </div>
