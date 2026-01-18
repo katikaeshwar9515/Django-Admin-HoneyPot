@@ -19,7 +19,7 @@
 - [How honeypots work](#how-honeypots-work)
 - [Development usage](#development-usage)
   - [Clone the repo](#clone-the-repo)
-  - [Enviroment Varibales](#enviroment-varibales)
+  - [Environment Variables](#environment-variables)
   - [Build everything](#build-everything)
 - [Testing](#testing)
 - [Got Stuck](#got-stuck)
@@ -68,26 +68,26 @@ Clone this repo anywhere you want and move into the directory (replace with your
 git clone https://github.com/<your-org>/Django-HoneyPot-Sample.git
 ```
 
-## Enviroment Varibales
+## Environment Variables
 
-enviroment varibales are included in docker-compose.yml file for debugging mode and you are free to change commands inside:
+environment variables are included in docker-compose.yml file for debugging mode and you are free to change commands inside:
 
 ```yaml
 services:
   backend:
-  command: sh -c "python manage.py check_database && \
-                      yes | python manage.py makemigrations  && \
-                      yes | python manage.py migrate  && \
-                      python manage.py runserver 0.0.0.0:8000"
-    environment:
-      - DEBUG=True
+  command: sh -c ""
+    environment:python manage.py check_database && \
+    yes | python manage.py makemigrations  && \
+    yes | python manage.py migrate  && \
+    python manage.py runserver 0.0.0.0:8000
+    - DEBUG=True
 ```
 
 ## Build everything
 
 The first time you run this it's going to take 5-10 minutes depending on your
 internet connection speed and computer's hardware specs. That's because it's
-going to download a few Docker images such as minio and build the Python + requirements dependencies. and dont forget to create a .env file inside dev folder for django and postgres with the samples.
+going to download a few Docker images such as minio and build the Python + requirements dependencies. and don't forget to create a .env file inside dev folder for django and postgres with the samples.
 
 ```bash
 docker compose up --build
@@ -98,7 +98,7 @@ app.
 
 # Testing
 
-in order to test the mechanism just head to the admin page (the fake one) which is available through the url bellow:
+in order to test the mechanism just head to the admin page (the fake one) which is available through the url below:
 
 - <http://127.0.0.1:8000/admin/login>
 
@@ -115,7 +115,7 @@ urlpatterns = [
 
 the one which leads to honeypot is fake and the other one is ok.
 
-this page is identical to the admin page but the difference is, no matter how many times you try, you cant login from here. attackers will try to hit the url of admin and using username and passwords to brute force to the admin page but, they cant cause it will lead to nothing and after a few times trying to test password it will lead to being blocked.
+this page is identical to the admin page but the difference is, no matter how many times you try, you can't login from here. attackers will try to hit the url of admin and using username and passwords to brute force to the admin page but, they can't cause it will lead to nothing and after a few times trying to test password it will lead to being blocked.
 
 <div align="center">
 <img loading="lazy" style="width:700px" src="./docs/demo.gif">
@@ -133,7 +133,7 @@ HONEYPOT_LOGIN_TRYOUT = 5
 
 # Got Stuck
 
-im pretty sure in your first test you will be locked out and you want to go back, so in order to do that just follow the instructions bellow and remove your ip address from blacklists.
+I'm pretty sure in your first test you will be locked out and you want to go back, so in order to do that just follow the instructions below and remove your ip address from blacklists.
 
 ```shell
 docker-compose exec backend sh -c "python manage.py shell"

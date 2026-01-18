@@ -37,8 +37,8 @@ ALLOWED_HOSTS = config(
 
 CSRF_TRUSTED_ORIGINS = config(
     "CSRF_TRUSTED_ORIGINS",
-    cast=lambda v: [s.strip() for s in v.split(",") if s.strip()],
-    default=[],
+    cast=lambda v: [s.strip() for s in v.split(",") if s.strip()] if isinstance(v, str) else v,
+    default="",
 )
 
 COMINGSOON = config("COMINGSOON", cast=bool, default=False)

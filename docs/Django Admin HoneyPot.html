@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<!-- saved from url=(0043)https://django-admin-honeypot.onrender.com/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Django Admin HoneyPot</title>
+    <link href="./Django Admin HoneyPot_files/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+
+    
+<style>
+  :root {
+    --apple-blue: #007aff;
+    --apple-gray: #86868b;
+    --apple-light-gray: #f5f5f7;
+    --apple-border: #d2d2d7;
+    --apple-text: #1d1d1f;
+  }
+
+  body {
+    background: #fbfbfd;
+    color: var(--apple-text);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI",
+      sans-serif;
+  }
+
+  .hero {
+    background: linear-gradient(135deg, #ffffff 0%, #f5f5f7 100%);
+    border-radius: 20px;
+    padding: 4rem 3rem;
+    margin-bottom: 4rem;
+    border: 1px solid var(--apple-border);
+  }
+
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-weight: 500;
+    background: rgba(0, 122, 255, 0.08);
+    color: var(--apple-blue);
+    letter-spacing: 0.01em;
+    font-size: 0.875rem;
+    border: none;
+  }
+
+  .feature-card {
+    background: #ffffff;
+    border: 1px solid var(--apple-border);
+    border-radius: 16px;
+    padding: 2rem;
+    height: 100%;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .feature-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+    border-color: rgba(0, 122, 255, 0.2);
+  }
+
+  .step {
+    border-left: 2px solid var(--apple-blue);
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .cta-btn {
+    min-width: 140px;
+    padding: 0.75rem 1.5rem;
+    border-radius: 12px;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+    border: none;
+  }
+
+  .btn-primary {
+    background: var(--apple-blue);
+    color: white;
+  }
+
+  .btn-primary:hover {
+    background: #0051d5;
+    transform: translateY(-1px);
+  }
+
+  .btn-outline-danger {
+    background: transparent;
+    color: #ff3b30;
+    border: 1.5px solid #ff3b30;
+  }
+
+  .btn-outline-danger:hover {
+    background: #ff3b30;
+    color: white;
+  }
+
+  .status-card {
+    background: white;
+    border: 1px solid var(--apple-border);
+    border-radius: 16px;
+    padding: 2rem;
+  }
+
+  .stat-number {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: var(--apple-text);
+  }
+
+  .stat-label {
+    font-size: 0.875rem;
+    color: var(--apple-gray);
+    font-weight: 400;
+  }
+
+  h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+
+  .lead {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    color: var(--apple-gray);
+    font-weight: 400;
+  }
+
+  .section-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--apple-blue);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.5rem;
+  }
+
+  .quick-link {
+    color: var(--apple-blue);
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.2s ease;
+  }
+
+  .quick-link:hover {
+    color: #0051d5;
+  }
+</style>
+
+  </head>
+
+  <body style="
+      background: #fbfbfd;
+      font-family: -apple-system, BlinkMacSystemFont, &#39;SF Pro Display&#39;,
+        &#39;Segoe UI&#39;, sans-serif;
+    ">
+    <header class="py-3" style="
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(20px);
+        border-bottom: 1px solid #d2d2d7;
+      ">
+      <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-between">
+          <a href="https://django-admin-honeypot.onrender.com/" class="d-flex align-items-center text-decoration-none" style="color: #1d1d1f; font-size: 1.25rem; font-weight: 600">
+            Django HoneyPot
+          </a>
+
+          <ul class="nav d-flex gap-1 mb-0">
+            <li>
+              <a href="https://django-admin-honeypot.onrender.com/secret-admin-entrance" class="nav-link px-3" style="color: #1d1d1f">Admin</a>
+            </li>
+            <li>
+              <a href="https://django-admin-honeypot.onrender.com/admin" class="nav-link px-3" style="color: #ff3b30">HoneyPot</a>
+            </li>
+            <li>
+              <a href="https://django-admin-honeypot.onrender.com/about/" class="nav-link px-3" style="color: #1d1d1f">About</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    
+<section class="container py-5" id="top">
+  <div class="hero">
+    <div class="row g-5 align-items-center">
+      <div class="col-lg-7">
+        <span class="pill mb-4 d-inline-block">Django Admin HoneyPot</span>
+        <h1 class="mb-4">
+          Deflect attackers.<br>Protect your real admin.
+        </h1>
+        <p class="lead mb-5">
+          A minimalist honeypot that absorbs attacks at <code>/admin/</code> while your real admin stays hidden at <code>/secret-admin-entrance/</code>.
+        </p>
+        <div class="d-flex flex-wrap gap-3">
+          <a href="https://django-admin-honeypot.onrender.com/secret-admin-entrance/" class="btn btn-primary cta-btn">Real Admin</a>
+          <a href="https://django-admin-honeypot.onrender.com/admin/" class="btn btn-outline-danger cta-btn">Test Honeypot</a>
+        </div>
+      </div>
+      <div class="col-lg-5">
+        <div class="status-card">
+          <p class="section-title mb-3">Live Status</p>
+          <p class="h5 fw-semibold mb-4" style="color: var(--apple-text);">Decoy active and monitoring</p>
+          <div class="d-grid gap-2 mb-4">
+            <a href="https://django-admin-honeypot.onrender.com/about/" class="btn" style="background: var(--apple-light-gray); color: var(--apple-text); border-radius: 12px; padding: 0.75rem;">About</a>
+          </div>
+          <div class="border-top pt-4" style="border-color: var(--apple-border) !important;">
+          <div class="row g-4">
+            <div class="col-4">
+              <div class="stat-number">20</div>
+              <div class="stat-label">Honeypot hits</div>
+            </div>
+            <div class="col-4">
+              <div class="stat-number">0</div>
+              <div class="stat-label">Attempts</div>
+            </div>
+            <div class="col-4">
+              <div class="stat-number">0</div>
+              <div class="stat-label">Blocked IPs</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<section class="container py-5" id="features">
+  <div class="mb-5">
+    <p class="section-title">Features</p>
+    <h2 style="font-size: 2.5rem; font-weight: 700; letter-spacing: -0.02em;">Built for security</h2>
+  </div>
+  <div class="row g-4">
+    
+    <div class="col-md-4">
+      <div class="feature-card">
+        <h5 class="mb-3" style="font-weight: 600;">Decoy Admin</h5>
+        <p class="mb-0" style="color: var(--apple-gray); line-height: 1.6;">Fake /admin/ absorbs brute-force attempts and records behavior.</p>
+      </div>
+    </div>
+    
+    <div class="col-md-4">
+      <div class="feature-card">
+        <h5 class="mb-3" style="font-weight: 600;">Hidden Entry</h5>
+        <p class="mb-0" style="color: var(--apple-gray); line-height: 1.6;">Real admin lives at /secret-admin-entrance/ for authorized staff only.</p>
+      </div>
+    </div>
+    
+    <div class="col-md-4">
+      <div class="feature-card">
+        <h5 class="mb-3" style="font-weight: 600;">Lockouts &amp; Logging</h5>
+        <p class="mb-0" style="color: var(--apple-gray); line-height: 1.6;">Repeated failures trigger lockouts and provide intel for defense.</p>
+      </div>
+    </div>
+    
+  </div>
+</section>
+
+<section class="container py-5" id="workflow">
+  <div class="row g-5 align-items-start">
+    <div class="col-lg-6">
+      <p class="section-title">How it works</p>
+      <h2 class="mb-4" style="font-size: 2.5rem; font-weight: 700; letter-spacing: -0.02em;">Simple and effective</h2>
+      <p class="mb-5" style="color: var(--apple-gray); line-height: 1.6; font-size: 1.125rem;">
+        Three steps to see the honeypot in action.
+      </p>
+      <div class="mt-4">
+        
+        <div class="step">
+          <h6 class="mb-2" style="font-weight: 600; color: var(--apple-text);">Step 1</h6>
+          <p class="mb-0" style="color: var(--apple-gray);">Visit the landing page and understand the honeypot flow.</p>
+        </div>
+        
+        <div class="step">
+          <h6 class="mb-2" style="font-weight: 600; color: var(--apple-text);">Step 2</h6>
+          <p class="mb-0" style="color: var(--apple-gray);">Probe /admin/ and see lockouts in action.</p>
+        </div>
+        
+        <div class="step">
+          <h6 class="mb-2" style="font-weight: 600; color: var(--apple-text);">Step 3</h6>
+          <p class="mb-0" style="color: var(--apple-gray);">Use /secret-admin-entrance/ for the real admin login.</p>
+        </div>
+        
+      </div>
+    </div>
+    <div class="col-lg-6">
+    <div class="col-lg-6">
+      <div class="status-card">
+        <p class="section-title mb-3">Quick access</p>
+        <div class="d-flex flex-column gap-3">
+          <a class="quick-link d-flex align-items-center justify-content-between" href="https://django-admin-honeypot.onrender.com/admin/">
+            <span>Honeypot login</span>
+            <span style="color: var(--apple-gray); font-size: 0.875rem;">/admin/</span>
+          </a>
+          <a class="quick-link d-flex align-items-center justify-content-between" href="https://django-admin-honeypot.onrender.com/secret-admin-entrance/">
+            <span>Real admin</span>
+            <span style="color: var(--apple-gray); font-size: 0.875rem;">/secret-admin-entrance/</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<section class="container py-5" id="contact">
+  <div class="row g-5 align-items-start">
+    <div class="col-lg-7">
+      <p class="section-title">Get in touch</p>
+      <h2 class="mb-4" style="font-size: 2.5rem; font-weight: 700; letter-spacing: -0.02em;">Questions or feedback?</h2>
+      <p class="mb-5" style="color: var(--apple-gray); line-height: 1.6; font-size: 1.125rem;">
+        Contact the team or explore the source code on GitHub.
+      </p>
+      <div class="d-flex flex-wrap gap-3">
+        <a href="mailto:mukeshchevula@gmail.com" class="btn cta-btn" style="background: var(--apple-text); color: white;">Email team</a>
+        <a href="https://github.com/katikaeshwar9515/Django-Admin-HoneyPot" class="btn cta-btn" style="background: var(--apple-light-gray); color: var(--apple-text);" target="_blank">GitHub</a>
+      </div>
+    </div>
+    <div class="col-lg-5">
+      <div class="status-card">
+        <p class="section-title mb-4">Quick actions</p>
+        <div class="d-grid gap-3">
+          <a class="btn btn-primary cta-btn" href="https://django-admin-honeypot.onrender.com/secret-admin-entrance/">Real admin</a>
+          <a class="btn btn-outline-danger cta-btn" href="https://django-admin-honeypot.onrender.com/admin/">Test honeypot</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <div class="container">
+      <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+        <div class="col-md-4 d-flex align-items-center">
+          <a href="https://django-admin-honeypot.onrender.com/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+            <svg class="bi" width="30" height="24">
+              <use xlink:href="#bootstrap"></use>
+            </svg>
+          </a>
+          <span class="text-muted">© 2026 Django Admin HoneyPot</span>
+        </div>
+      </footer>
+    </div>
+    
+
+
+  
+
+  <script src="./Django Admin HoneyPot_files/bootstrap.bundle.min.js.download" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+  <script src="./Django Admin HoneyPot_files/jquery-3.6.0.min.js.download" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+   
+
+</body></html>
