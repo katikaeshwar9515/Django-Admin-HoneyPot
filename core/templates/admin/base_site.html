@@ -1,20 +1,41 @@
-{% extends "admin/base.html" %}
-{% load static %}
-
-{% block title %}
-{% if subtitle %}{{ subtitle }} | {% endif %}Admin Portal
-{% endblock %}
-
-{% block branding %}
-<h1 id="site-name">
-  <a href="{% url 'admin:index' %}">Admin Portal</a>
+{% extends "admin/base.html" %} {% load static %} {% block title %}Django
+HoneyPot Admin {% endblock %} {% block branding %}
+<h1 id="site-name" style="font-weight: 600; color: #1d1d1f">
+  <a
+    href="{% url 'admin:index' %}"
+    style="color: #007aff; text-decoration: none"
+    >🛡️ Django HoneyPot Admin</a
+  >
 </h1>
-{% endblock %}
+{% endblock %} {% block extrahead %}
+<!--  -->
+<style>
+  :root {
+    --primary-bg: #fbfbfd;
+    --card-bg: rgba(255, 255, 255, 0.9);
+    --text-primary: #1d1d1f;
+    --text-secondary: #86868b;
+    --border-color: #d2d2d7;
+    --accent-color: #007aff;
+  }
 
-{% block extrahead %}
-<link
-  rel="stylesheet"
-  type="text/css"
-  href="{% static 'css/admin-apple-style.css' %}"
-/>
+  body {
+    font-family:
+      -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI",
+      sans-serif !important;
+  }
+
+  #header {
+    background: rgba(255, 255, 255, 0.8) !important;
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border-color) !important;
+  }
+
+  .module {
+    border: 1px solid var(--border-color) !important;
+    border-radius: 12px !important;
+    background: var(--card-bg) !important;
+    backdrop-filter: blur(20px);
+  }
+</style>
 {% endblock %}

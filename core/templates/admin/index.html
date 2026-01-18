@@ -1,9 +1,6 @@
-{% extends "admin/index.html" %} {% load static %} {% block extrahead %}
-<link
-  rel="stylesheet"
-  type="text/css"
-  href="{% static 'css/admin-apple-style.css' %}"
-/>
+{% extends "admin/base_site.html" %} {% load i18n static %} {% block extrahead
+%} {{ block.super }}
+
 <style>
   /* Additional dashboard-specific styles */
   .dashboard-stats {
@@ -14,8 +11,8 @@
   }
 
   .stat-card {
-    background: var(--bg-white);
-    border: 1px solid var(--border-light);
+    background: var(--bg-black);
+    border: 1px solid var(--border-dark);
     border-radius: var(--radius-medium);
     padding: 24px;
     box-shadow: var(--shadow-medium);
@@ -57,6 +54,20 @@
     color: var(--apple-green);
   }
 
+  .card-icon {
+    font-size: 32px;
+    margin-bottom: 12px;
+    display: block;
+    line-height: 1;
+  }
+
+  .card-footer {
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-top: 8px;
+    opacity: 0.7;
+  }
+
   .dashboard #content-main {
     padding: 0;
   }
@@ -65,24 +76,83 @@
     margin-top: 20px;
   }
 </style>
-{% endblock %} {% block content %}
-<div class="dashboard-stats">
-  <div class="stat-card blue">
-    <h3>Total Users</h3>
-    <p class="number">{{ user_count|default:"0" }}</p>
+{% block content %}
+<div id="content-main">
+  <div class="dashboard-stats">
+    <div class="stat-card blue">
+      <div class="card-icon">👥</div>
+      <h3>Total Users</h3>
+      <p class="number">{{ user_count|default:"0" }}</p>
+      <div class="card-footer">Active accounts</div>
+    </div>
+    <div class="stat-card red">
+      <div class="card-icon">🍯</div>
+      <h3>Honeypot Hits</h3>
+      <p class="number">{{ honeypot_hits|default:"0" }}</p>
+      <div class="card-footer">Trapped attempts</div>
+    </div>
+    <div class="stat-card orange">
+      <div class="card-icon">🔐</div>
+      <h3>Login Attempts</h3>
+      <p class="number">{{ login_attempts|default:"0" }}</p>
+      <div class="card-footer">Total logins</div>
+    </div>
+    <div class="stat-card green">
+      <div class="card-icon">🚫</div>
+      <h3>Blocked IPs</h3>
+      <p class="number">{{ blocked_ips|default:"0" }}</p>
+      <div class="card-footer">Banned addresses</div>
+    </div>
   </div>
-  <div class="stat-card red">
-    <h3>Honeypot Hits</h3>
-    <p class="number">{{ honeypot_hits|default:"0" }}</p>
-  </div>
-  <div class="stat-card orange">
-    <h3>Login Attempts</h3>
-    <p class="number">{{ login_attempts|default:"0" }}</p>
-  </div>
-  <div class="stat-card green">
-    <h3>Blocked IPs</h3>
-    <p class="number">{{ blocked_ips|default:"0" }}</p>
-  </div>
-</div>
 
+  {% if app_list %} {% for app in app_list %}
+  <div class="app-{{ app.app_label }} module">
+    <table>
+      <caption>
+        <a
+          href="{{ app.app_url }}"
+          class="section"
+          title="{% blocktranslate with name=app.name %}Models in the {{ name }} application{% endblocktranslate %}"
+          >{{ app.name }}</a
+        >
+      </caption>
+      {% for model in app.models %}
+      <tr class="model-{{ model.object_name|lower }}">
+        {% if model.admin_url %}
+        <th scope="row">
+          <a href="{{ model.admin_url }}">{{ model.name }}</a>
+        </th>
+        {% else %}
+        <th scope="row">{{ model.name }}</th>
+        {% endif %} {% if model.add_url %}
+        <td>
+          <a href="{{ model.add_url }}" class="addlink"
+            >{% translate 'Add' %}</a
+          >
+        </td>
+        {% else %}
+        <td>&nbsp;</td>
+        {% endif %} {% if model.admin_url %} {% if model.view_only %}
+        <td>
+          <a href="{{ model.admin_url }}" class="viewlink"
+            >{% translate 'View' %}</a
+          >
+        </td>
+        {% else %}
+        <td>
+          <a href="{{ model.admin_url }}" class="changelink"
+            >{% translate 'Change' %}</a
+          >
+        </td>
+        {% endif %} {% else %}
+        <td>&nbsp;</td>
+        {% endif %}
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+  {% endfor %} {% else %}
+  <p>{% translate "You don't have permission to view or edit anything." %}</p>
+  {% endif %}
+</div>
 {% endblock %}
