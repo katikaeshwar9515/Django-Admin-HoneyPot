@@ -21,6 +21,7 @@ from django.views.generic import TemplateView
 from rest_framework import permissions
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
+from core.admin import admin_site
 
 schema_view = get_schema_view(
     openapi.Info(
@@ -38,7 +39,7 @@ schema_view = get_schema_view(
 
 urlpatterns = [
     path("admin/", include("honeypot.urls")),
-    path("secret-admin-entrance/", admin.site.urls),
+    path("secret-admin-entrance/", admin_site.urls),
     path("", include("website.urls")),
 ]
 

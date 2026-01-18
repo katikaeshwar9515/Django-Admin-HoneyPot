@@ -1,0 +1,20 @@
+{% extends "admin/base.html" %}
+{% load static %}
+
+{% block title %}
+{% if subtitle %}{{ subtitle }} | {% endif %}Admin Portal
+{% endblock %}
+
+{% block branding %}
+<h1 id="site-name">
+  <a href="{% url 'admin:index' %}">Admin Portal</a>
+</h1>
+{% endblock %}
+
+{% block extrahead %}
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'css/admin-apple-style.css' %}"
+/>
+{% endblock %}

@@ -1,0 +1,88 @@
+{% extends "admin/index.html" %} {% load static %} {% block extrahead %}
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'css/admin-apple-style.css' %}"
+/>
+<style>
+  /* Additional dashboard-specific styles */
+  .dashboard-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+  }
+
+  .stat-card {
+    background: var(--bg-white);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-medium);
+    padding: 24px;
+    box-shadow: var(--shadow-medium);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-large);
+  }
+
+  .stat-card h3 {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin: 0 0 8px 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+  }
+
+  .stat-card .number {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  .stat-card.blue .number {
+    color: var(--apple-blue);
+  }
+  .stat-card.red .number {
+    color: var(--apple-red);
+  }
+  .stat-card.orange .number {
+    color: var(--apple-orange);
+  }
+  .stat-card.green .number {
+    color: var(--apple-green);
+  }
+
+  .dashboard #content-main {
+    padding: 0;
+  }
+
+  .module.dashboard-module {
+    margin-top: 20px;
+  }
+</style>
+{% endblock %} {% block content %}
+<div class="dashboard-stats">
+  <div class="stat-card blue">
+    <h3>Total Users</h3>
+    <p class="number">{{ user_count|default:"0" }}</p>
+  </div>
+  <div class="stat-card red">
+    <h3>Honeypot Hits</h3>
+    <p class="number">{{ honeypot_hits|default:"0" }}</p>
+  </div>
+  <div class="stat-card orange">
+    <h3>Login Attempts</h3>
+    <p class="number">{{ login_attempts|default:"0" }}</p>
+  </div>
+  <div class="stat-card green">
+    <h3>Blocked IPs</h3>
+    <p class="number">{{ blocked_ips|default:"0" }}</p>
+  </div>
+</div>
+
+{% endblock %}
